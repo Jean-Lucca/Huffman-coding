@@ -9,8 +9,8 @@ import java.util.Map.Entry;
 
 public class HuffmanEncoding {
 
-	Hashtable<Character,Double> ft;
-	Hashtable<Character,String> et;
+	Hashtable<Character, Double> ft;
+	Hashtable<Character, String> et;
 	PriorityQueue<Node> q;
 
 	public HuffmanEncoding() {
@@ -110,20 +110,20 @@ public class HuffmanEncoding {
     }
 
 	//substitui os metodos que imprimem a arvore por um metodo que constroe a arvore com o codigo
-	public void buildTreeCode(Node root,String cd, Hashtable<Character,String> table) {
+	public void buildTreeCode(Node root,String cd) {
         if(!root.isLeaf()){
-            buildTreeCode(root.leftChild, cd + '0', table);
-            buildTreeCode(root.rightChild, cd + '1', table);
+            buildTreeCode(root.leftChild, cd + '0');
+            buildTreeCode(root.rightChild, cd + '1');
         }else{
-            table.put(root.character, cd);
+            et.put(root.character, cd);
         }
     }
 
 	//construo o codigo a partir da tabela
-	public String buildCode(String s, Hashtable<Character,String> table) {
+	public String buildCode(String s) {
         StringBuilder builder = new StringBuilder();
         for (char chr : s.toCharArray()){
-            builder.append(table.get(chr));
+            builder.append(et.get(chr));
         }
         return builder.toString();
     }
@@ -203,9 +203,9 @@ public class HuffmanEncoding {
 
 		buildQueue(countFrequency(texto));
         Node treeRoot = buildBinTree();
-		buildTreeCode(treeRoot,"", et);
+		buildTreeCode(treeRoot,"");
 
-		String codigo = buildCode(texto, et);
+		String codigo = buildCode(texto);
 		String copia = decode(treeRoot, codigo);
 		
 		writeTable(et);

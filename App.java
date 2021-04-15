@@ -6,7 +6,7 @@ public class App {
 		HuffmanEncoding hf = new HuffmanEncoding();
 		String texto = "";
 		texto = hf.read("Teste.txt");
-		texto = "Como eu não estou escrevendo em binario o arquivo compactado é maior que o original";
+		//texto = "Como eu não estou escrevendo em binario o arquivo compactado é maior que o original";
 		hf.runEncodeDecode(texto);
 	}
 }
